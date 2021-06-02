@@ -269,7 +269,7 @@ class LogChecker implements LogCheckerContract
         $status   = true;
         $filename = basename($path);
         $message  = "The log file [$filename] is valid.";
-        $pattern  = $this->filesystem->getPattern();
+        $pattern  = config('log-viewer.pattern.extract');
 
         if ($this->isSingleLogFile($filename)) {
             $this->status = $status = false;
