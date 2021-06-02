@@ -1,13 +1,13 @@
 {
-    "name":        "arcanedev/log-viewer",
+    "name":        "nguyenchilong/logviewer",
     "description": "Provides a Log Viewer for Laravel",
     "keywords":    ["arcanedev", "arcanesoft", "laravel", "log", "log viewer", "log-viewer", "logviewer"],
-    "homepage":    "https://github.com/ARCANEDEV/LogViewer",
+    "homepage":    "https://github.com/nguyenchilong/logviewer",
     "authors": [
         {
-            "name":     "ARCANEDEV",
-            "email":    "arcanedev.maroc@gmail.com",
-            "homepage": "https://github.com/arcanedev-maroc",
+            "name":     "Long Nguyen",
+            "email":    "nguyenchilong90@gmail.com",
+            "homepage": "https://github.com/nguyenchilong/logviewer",
             "role":     "Developer"
         }
     ],
