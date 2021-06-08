@@ -9,6 +9,7 @@ use Arcanedev\LogViewer\Exceptions\FilesystemException;
 use Arcanedev\LogViewer\Helpers\LogParser;
 use Exception;
 use Illuminate\Filesystem\Filesystem as IlluminateFilesystem;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class     Filesystem
@@ -236,12 +237,11 @@ class Filesystem implements FilesystemContract
             $log = $this->filesystem->get(
                 $this->getLogPath($date)
             );
+            return $log;
+        } catch (Exception $e) {
+            Log::info($e->getMessage());
+            return '';
         }
-        catch (Exception $e) {
-            throw new FilesystemException($e->getMessage());
-        }
-
-        return $log;
     }
 
     /**
@@ -318,11 +318,12 @@ class Filesystem implements FilesystemContract
     {
         $path = $this->storagePath.DIRECTORY_SEPARATOR.$this->prefixPattern.$date.$this->extension;
 
-        if ( ! $this->filesystem->exists($path)) {
-            throw FilesystemException::invalidPath($path);
+        if ($this->filesystem->exists($path)) {
+            return realpath($path);
+        } else {
+            Log::info("The log(s) could not be located at : $path");
+            return '';
         }
-
-        return realpath($path);
     }
 
     /**
